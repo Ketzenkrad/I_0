@@ -48,8 +48,10 @@ for (let i = 0; i < 2; i++) {
         console.log("Проверка работает");
         appData.expenses[answer1] = answer2;
     } else {
+        i--;
         //условия выхода
-        break;
+        let answer1 = prompt("Введите обязательную статью расходов в этом месяце: "),
+            answer2 = +prompt("Во сколько обойдется? ");
     }
 };
 
