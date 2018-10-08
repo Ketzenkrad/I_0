@@ -49,7 +49,7 @@ for (let i = 0; i < 2; i++) {
         appData.expenses[answer1] = answer2;
     } else {
         i--;
-        break;
+        // break;
         //условия выхода
     }
 };
