@@ -49,9 +49,8 @@ for (let i = 0; i < 2; i++) {
         appData.expenses[answer1] = answer2;
     } else {
         i--;
+        continue;
         //условия выхода
-        let answer1 = prompt("Введите обязательную статью расходов в этом месяце: "),
-            answer2 = +prompt("Во сколько обойдется? ");
     }
 };
 
