@@ -25,6 +25,15 @@ console.log(appData);
 //     appData.expenses[answer1] = answer2;
 //     console.log("while is work");
 //     counter++;
+//     if (
+//         (typeof(anwser1)) === 'string' && (typeof(answer1)) != null && (typeof(answer2)) != null &&
+//         answer1 != '' && answer2 != '' && answer1.length < 50
+//     ) {
+//         console.log("On");
+//         appData.expenses[answer1] = answer2;
+//     } else {
+//         (counter--);
+//     }
 // };
 
 //цикл do..while
@@ -35,9 +44,18 @@ console.log(appData);
 //     appData.expenses[answer1] = answer2;
 //     console.log("do..while is work")
 //     counter++;
+//     if (
+//         (typeof(anwser1)) === 'string' && (typeof(answer1)) != null && (typeof(answer2)) != null &&
+//         answer1 != '' && answer2 != '' && answer1.length < 50
+//     ) {
+//         console.log("Work");
+//         appData.expenses[answer1] = answer2;
+//     } else {
+//         (counter--);
+//     }
 // } while (counter < 2);
 
-//вопросы для пользователя через цикл
+//вопросы для пользователя через цикл for
 for (let i = 0; i < 2; i++) {
     let answer1 = prompt("Введите обязательную статью расходов в этом месяце: "),
         answer2 = +prompt("Во сколько обойдется? ");
