@@ -1,25 +1,30 @@
 'use strict';
 
-//данные от пользователя
-let money = +prompt("Ваш бюджет на месяц? ", "Примерная сумма..."),
-    time = prompt("Введите дату в формате YYYY-MM-DD ", "Например 2018-10-04");
-alert(`Бюджет на месяц ${money}`);
-
-//вопросы для пользователя
-let one = prompt("Введите обязательную статью расходов в этом месяце: ", "Введите статью.."),
-    two = +prompt("Во сколько обойдется? ", "Введите сумму.. ");
-alert(`Бюджет на один день: ${two}`);
+//Вопросы пользователю
+let money = +prompt("Ваш бюджет на месяц? "),
+    time = prompt('Введите дату в формате YYYY-MM-DD ');
+let answer1 = prompt("Введите обязательную статью расходов в этом месяце: "),
+    answer2 = +prompt("Во сколько обойдется? "),
+    answer3 = prompt("Введите обязательную статью расходов в этом месяце: "),
+    answer4 = +prompt("Во сколько обойдется? ");
 
 //объект данных пользователя
-let AppData = {
+let appData = {
     budget: money,
     timeData: time,
     expenses: {
-        answers: `Статья расхода: ${one}, сумма: ${two}`
+        [answer1]: answer2,
+        [answer3]: answer4
     },
     optionalExpenses: {},
     income: [],
     savings: false
 };
-//Лог объекта
-console.log(AppData);
+//лог объекта
+console.log(appData);
+
+//to expenses
+appData.expenses_per_day = appData.budget / 30;
+
+//user_alert 
+alert(`Бюджет на один день: ${appData.expenses_per_day}`);
