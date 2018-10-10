@@ -73,16 +73,28 @@
 // firstFunc();
 // secondFunc();
 
-function callBackTest(test, callback) {
-    console.log("Тест callback. " + test);
-    callback();
-};
+// function callBackTest(test, callback) {
+//     console.log("Тест callback. " + test);
+//     callback();
+// };
 
-function work(params) {
-    console.log("Отдельная отработка работает. ");
-}
-work("Отдельный тест", work)
+// function work(params) {
+//     console.log("Отдельная отработка работает. ");
+// }
+// work("Отдельный тест", work)
 
-callBackTest("Тест работает. [1]", function(params) {
-    console.log("Тест callback. Тест работает. [2]")
-});
+// callBackTest("Тест работает. [1]", function(params) {
+//     console.log("Тест callback. Тест работает. [2]")
+// });
+
+//Строка;
+let string = "урок-3-был слишком легким.";
+console.log(`Без изменений: ${string}`);
+//Убрать пробелы;
+let removeSpace = string.replace(/-/g, " ");
+console.log(`С заменой тире на пробелы: ${removeSpace}`);
+//Привести нулевой элемент в uppercase;
+let upSimbol = removeSpace[0].toUpperCase() + removeSpace.slice(1);
+console.log(`С заглавной буквы: ${upSimbol}`);
+//Удаление слова "легким";
+let cutter = '';

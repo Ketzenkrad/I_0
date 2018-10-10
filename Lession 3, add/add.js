@@ -1,0 +1,13 @@
+//Строка;
+let string = "урок-3-был слишком легким";
+console.log(`Без изменений: ${string}`);
+//Убрать пробелы;
+let removeSpace = string.replace(/-/g, " ");
+console.log(`С заменой тире на пробелы: ${removeSpace}`);
+//Привести нулевой элемент в uppercase;
+let upSimbol = removeSpace[0].toUpperCase() + removeSpace.slice(1);
+console.log(`С заглавной буквы: ${upSimbol}`);
+console.log(upSimbol.length);
+//Удаление слова "легким";
+let cutter = upSimbol.substring(0, upSimbol.lastIndexOf(" "));
+console.log(cutter);
