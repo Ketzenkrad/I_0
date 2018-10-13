@@ -16,11 +16,11 @@ let today = new Date();
 alert(`Это ` + dayArray(today.getDay()));
 
 //Разность
-function difference(params) {
-    let inputOne = document.querySelector('.dateOne'),
-        inputTwo = document.querySelector('.dateTwo'),
-        result = document.querySelector('result');
-};
+// function difference(params) {
+//     let inputOne = document.querySelector('.dateOne'),
+//         inputTwo = document.querySelector('.dateTwo'),
+//         result = document.querySelector('result');
+// };
 
 //Перевод
 function check(num) {
