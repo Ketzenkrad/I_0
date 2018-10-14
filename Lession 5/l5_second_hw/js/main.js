@@ -129,10 +129,10 @@ console.log(appData);
 let payment = document.getElementById("start");
 console.log(payment);
 //все блоки в правой части программы
-let rightBlock = document.getElementsByClassName(".budget-value .daybudget-value .level-value .expenses-value .optionalexpenses-value .income-value .monthsavings-value .yearsavings-value");
+let rightBlock = document.querySelectorAll(".result-table");
 console.log(rightBlock);
 //Получение input-поля
-let inputExpenses = document.getElementsByClassName(".expenses-item");
+let inputExpenses = document.querySelectorAll(".expenses-item");
 console.log(inputExpenses);
 //кнопки “Утвердить” и “Рассчитать”
 let approve = document.getElementsByTagName('button');
@@ -141,7 +141,7 @@ console.log(approve);
 let optionalExpInput = document.querySelectorAll('.optionalexpenses-item');
 console.log(optionalExpInput);
 //статьи возможного дохода
-let possible = document.querySelector('.choose-income');
+let possible = document.querySelector('.choose-income-label');
 console.log(possible);
 //чекбокс
 let checkbox = document.querySelector('.checksavings');
