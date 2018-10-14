@@ -124,6 +124,7 @@ let appData = {
 console.log(appData);
 
 //Переменные кнопок и блоков;
+
 //Start
 let payment = document.getElementById("start");
 console.log(payment);
@@ -136,13 +137,11 @@ console.log(inputExpenses);
 //кнопки “Утвердить” и “Рассчитать”
 let approve = document.getElementsByTagName('button');
 console.log(approve);
-let calculate = document.getElementsByTagName('button');
-console.log(calculate);
 //поля для ввода необязательных расходов
 let optionalExpInput = document.querySelectorAll('.optionalexpenses-item');
 console.log(optionalExpInput);
 //статьи возможного дохода
-let possible = document.querySelector('.choose-income-label');
+let possible = document.querySelector('.choose-income');
 console.log(possible);
 //чекбокс
 let checkbox = document.querySelector('.checksavings');

@@ -14,11 +14,10 @@ document.body.style.backgroundImage = 'url(img/apple_true.jpg)';
 let titles = document.querySelector('.title');
 titles.innerHTML = 'Мы продаем только <strong>подлинную</strong> технику Apple';
 
-//###remove||реклама;
-//Я вообще не понял, как можно было из двух одинаковых дивов column 
-//выбрать тот, в котором был class = "adv"; Поэтому перебор через each и элементы.
-let advRemove = (advertising) => [...advertising].forEach(elements => elements.remove());
-advRemove(document.querySelectorAll(".adv"));
+//###Правка рекламы;
+let advertising = document.querySelectorAll('.adv')[0];
+let column = document.querySelectorAll('.column');
+advertising.remove();
 
 //###prompt;
 input = document.querySelector('.prompt');
