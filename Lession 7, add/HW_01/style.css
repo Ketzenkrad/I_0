@@ -1,0 +1,21 @@
+body {
+    background: black;
+}
+
+.clock {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: #f0f3f4;
+    font-size: 60px;
+    font-family: Roboto;
+    letter-spacing: 7px;
+}
+
+.clock:hover {
+    color: #3ff4ee;
+    box-shadow: -1px -1px 35px 6px #3ff4ee, 1px 1px 35px 6px #27ae60;
+    transition: box-shadow 500ms;
+}
