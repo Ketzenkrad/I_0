@@ -62,7 +62,7 @@ window.addEventListener('DOMContentLoaded', function() {
     });
     //Продолжение функции, получаем элементы, интерактив таймера;
     //Дата
-    let deadline = '2018-10-18';
+    let deadline = '2018-10-20';
     //Промежуток времени от данного момента до дедлайна;
     function getTimeRemaining(endtime) {
         //Разница во времени;
@@ -94,6 +94,7 @@ window.addEventListener('DOMContentLoaded', function() {
             hours = timer.querySelector('.hours'),
             minutes = timer.querySelector('.minutes'),
             seconds = timer.querySelector('.seconds'),
+            // numbers = document.querySelector('.timer-numbers'),
             //Переменная интервала;
             timeInterval = setInterval(updateClock, 1000);
         //Функция запуска через интервал;
@@ -101,16 +102,18 @@ window.addEventListener('DOMContentLoaded', function() {
             //Обновление;
             let t = getTimeRemaining(endtime);
             //Пишем в HTML;
-            //Запись в HTML = Ноль + значение.clice минус два;
-            hours.textContent = ('0' + t.hours).slice(-2);
-            minutes.textContent = ('0' + t.minutes).slice(-2);
-            seconds.textContent = ('0' + t.seconds).slice(-2);
+            //Запись в HTML;
+        hours.innerHTML = (t.hours < 10) ? '0' + t.hours : t.hours;
+        minutes.innerHTML = (t.minutes < 10) ? '0' + t.minutes : t.minutes;
+        seconds.innerHTML = (t.seconds < 10) ? '0' + t.seconds : t.seconds;
             //Условие остановки таймера:
             if (t.total <= 0) {
-                //Получение элементов;
-                document.querySelector('.').className = "hidden";
-                document.querySelector('.').className = "visible";
-                clearInterval(timeInterval);
+                //Перезапись элементов по очистке таймера;
+            clearInterval(timeInterval);
+            hours.innerHTML = '00';
+            minutes.innerHTML = '00';
+            seconds.innerHTML = '00';
+            // number.innerHTML = 'END';
                 console.log("End++");
             }
         }
@@ -118,4 +121,10 @@ window.addEventListener('DOMContentLoaded', function() {
     //test
     //multiple;
     setClock('timer', deadline);
+    //Скролл, заготовка;
+// let about = document.querySelector('.'),
+//     photo = document.querySelector('.'),
+//     price = document.querySelector('.'),
+//     contacts = document.querySelector('.');
+
 });
