@@ -11,6 +11,7 @@
 window.addEventListener('DOMContentLoaded', function() {
     //Основная логика;
     'use strict'
+
     //Скрипт табов;
     //Получение элементов;
     let tab = document.querySelectorAll('.info-header-tab'),
@@ -27,6 +28,7 @@ window.addEventListener('DOMContentLoaded', function() {
             tabContent[index].classList.add('hide');
         }
     }
+
     //Запуск функции; Передаем 1 передающуюся в hide, которая
     //отрабатывает в цикле;
     hideTabs(1);
@@ -60,6 +62,7 @@ window.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+
     //Продолжение функции, получаем элементы, интерактив таймера;
     //Дата
     let deadline = '2018-10-22';
@@ -121,11 +124,6 @@ window.addEventListener('DOMContentLoaded', function() {
     //test
     //multiple;
     setClock('timer', deadline);
-    //Скролл, заготовка;
-    // let about = document.querySelector('.'),
-    //     photo = document.querySelector('.'),
-    //     price = document.querySelector('.'),
-    //     contacts = document.querySelector('.');
 
     //Модальные окна;
     //Получение элементов;
@@ -154,16 +152,105 @@ window.addEventListener('DOMContentLoaded', function() {
         overlay.style.display = "block";
         document.body.style.overflow = 'hidden';
     });
-    //If
-    // moreTab.addEventListener('click', function(event) {
-    //     let target = event.target;
 
-    //     if (target.className === 'description-btn') {
-    //         //По клику меняем стиль;
-    //         overlay.style.display = 'block';
-    //         this.classList.add('more-splash');
-    //         //Запрет скролла
-    //         document.body.style.overflow = 'hidden';
-    //     }
-    // });
+    //Цикл для кнопок;
+    let buttonMore = document.querySelectorAll('.description-btn');
+    //Сам цикл
+    for (let index = 0; index < buttonMore.length; index++) {
+        let buttons = buttonMore[index];
+        buttons.addEventListener('click', function(event) {
+            if (event.target && event.target.className == 'description-btn') {
+                event.target.classList.add('more-splash');
+                overlay.style.display = "block";
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    }
+
+    //Ajax
+    //Объект состояний запроса;
+    let message = {
+        loading: 'Загрузка..',
+        success: 'Заявка отправлена.',
+        failure: 'Ошибка.'
+    };
+
+    let form = document.querySelector('.main-form'),
+        //Получение инпут формы
+        input = form.getElementsByTagName('input'),
+        //Создание дива с сообщением
+        statusMessage = document.createElement('div');
+    //Стиль для сообщения
+    statusMessage.classList.add('status');
+    form.addEventListener('submit', function(event) {
+        //Отмена перезагрузки страницы по стандартному поведению браузера;
+        event.preventDefault();
+        //Добавление в форму div
+        form.appendChild(statusMessage);
+        //Создание запроса;
+        let request = new XMLHttpRequest();
+        request.open('POST', 'server.php');
+        //Заголовки запроса
+        request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        // request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        //Данные из инпутов
+        let formData = new FormData(form);
+        //to json
+        let simple = {};
+        //Берем форм-дату
+        formData.forEach(function(value, key) {
+            simple[key] = value;
+        });
+        let json = JSON.stringify(simple);
+        request.send(json);
+        //Передача как body
+        // request.send(formData);
+        //Изменение состояния;
+        request.addEventListener('readystatechange', function() {
+            if (request.readyState < 4) {
+                statusMessage.innerHTML = message.loading;
+            } else if (request.readyState === 4 && request.status == 200) {
+                statusMessage.innerHTML = message.success;
+            } else {
+                statusMessage.innerHTML = message.failure;
+            }
+        });
+        //Цикл для инпутов по всей форме
+        for (let counter = 0; counter < input.length; counter++) {
+            //Очистка инпутов
+            input[counter].value = '';
+        }
+    });
+
+    //AJAX контакт-формы;
+    let contactsForm = document.querySelector('.contact-form form');
+
+    contactsForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        contactsForm.appendChild(statusMessage);
+
+        let request = new XMLHttpRequest();
+        request.open("POST", 'server.php');
+        request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        let formData = new FormData(contactsForm);
+
+        request.send(formData);
+
+        request.onreadystatechange = function() {
+            if (request.readyState < 4) {
+                statusMessage.innerHTML = message.loading;
+            } else if (request.readyState === 4) {
+                if (request.status == 200 && request.status < 300) {
+                    statusMessage.innerHTML = message.success;
+                } else {
+                    statusMessage.innerHTML = message.failure;
+                };
+            };
+        };
+        //Цикл очистки;
+        for (let counter = 0; counter < contactsForm.length; counter++) {
+            contactsForm[counter].value = '';
+        }
+    });
 });
