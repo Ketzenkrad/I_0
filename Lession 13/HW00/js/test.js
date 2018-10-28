@@ -350,7 +350,7 @@ window.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    //Jquery
+    //Проверка и запрет на иные символы;
     function numberblock(input) {
         input.addEventListener('input', function() {
             input.value = input.value.replace(/[^\d]/g, '');
