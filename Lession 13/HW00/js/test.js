@@ -349,4 +349,16 @@ window.addEventListener('DOMContentLoaded', function() {
             totalValue.innerHTML = x * this.options[this.selectedIndex].value;
         }
     });
+
+    //Jquery
+    function numberblock(input) {
+        input.addEventListener('input', function() {
+            input.value = input.value.replace(/[^\d]/g, '');
+            if (input.value.length > 2) input.value = input.value.slice(0, 2);
+        });
+    }
+
+    numberblock(persons);
+    numberblock(days);
+
 });
