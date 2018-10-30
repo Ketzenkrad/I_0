@@ -9,6 +9,10 @@ function form() {
         input = form.getElementsByTagName('input'),
         statusMessage = document.createElement('div');
 
+         input[0].addEventListener('input', function () {
+    input[0].value = input[0].value.replace(/[^0-9+() ]/ig, '');
+  });
+
     statusMessage.classList.add('status');
 
 
@@ -46,7 +50,15 @@ function form() {
     });
 
 
-    let contactsForm = document.querySelector('.contact-form form');
+    let contactsForm = document.querySelector('form'),
+        contactInput = contactsForm.querySelectorAll('input');
+        
+          contactInput[1].addEventListener('input', function () {
+            contactInput[1].value = contactInput[1].value.replace(/[^0-9+() ]/ig, '');
+         });
+
+
+
 
     contactsForm.addEventListener('submit', function(event) {
         event.preventDefault();

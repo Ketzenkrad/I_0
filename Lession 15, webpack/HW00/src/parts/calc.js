@@ -17,7 +17,8 @@ function calc() {
             usersumm % 1 != 0 || dayssumm % 1 != 0 || usersumm <= 0 || dayssumm <= 0) {
             totalValue.innerHTML = 0;
         } else {
-            totalValue.innerHTML = total;
+            let x = total;
+            totalValue.innerHTML = x * places.options[places.selectedIndex].value;
         }
     });
 
@@ -29,7 +30,8 @@ function calc() {
             usersumm % 1 != 0 || dayssumm % 1 != 0 || usersumm <= 0 || dayssumm <= 0) {
             totalValue.innerHTML = 0;
         } else {
-            totalValue.innerHTML = total;
+          let x = total;
+            totalValue.innerHTML = x * places.options[places.selectedIndex].value;
         }
     });
 

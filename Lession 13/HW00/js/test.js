@@ -249,58 +249,56 @@ window.addEventListener('DOMContentLoaded', function() {
     //Слайдер и калькулятор;
     //Параметры слайдов
     let slideIndex = 1,
-        slides = document.querySelectorAll('.slider-item'),
-        preview = document.querySelector('.prev'),
+        slides = document.getElementsByClassName('slider-item'),
+        prev = document.querySelector('.prev'),
         next = document.querySelector('.next'),
-        activeDot = document.querySelector('.slider-dots'),
-        allDots = document.querySelectorAll('.dot');
-    //Функция показа слайдов;
-    function show(s) {
-        //проверка номеров слайда
-        if (s > slideIndex.length) {
+        dotsWrap = document.querySelector('.slider-dots'),
+        dots = document.getElementsByClassName('dot');
+
+    showSlides(slideIndex);
+
+    function showSlides(n) {
+        if (n > slides.length) {
             slideIndex = 1;
         }
-        if (s < 1) {
+        if (n < 1) {
             slideIndex = slides.length;
         }
-        //на перебор;
-        slides.forEach((item) => item.style.display = 'none');
-        // for (let counter = 0; counter < slides.length; counter++) {
-        //     slides[counter].style.display = 'none';
-        // }
-        //работа с точками;
-        allDots.forEach((item) => item.classList.remove('dot-active'));
-        //показ нужного слайда;
+
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = 'none';
+        }
+
+        for (let i = 0; i < dots.length; i++) {
+            dots[i].classList.remove('dot-active');
+        }
+
         slides[slideIndex - 1].style.display = 'block';
-        allDots[slideIndex - 1].classList.add('dot-active');
+        dots[slideIndex - 1].classList.add('dot-active');
     }
-    //Функция увеличения индекса;
-    function plusSlide(s) {
-        show(slideIndex += s);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
     }
-    //функция установки текущего слайда;
-    function current(s) {
-        show(slideIndex = s);
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
     }
-    //обработка события;
-    preview.addEventListener('click', function() {
-        plusSlide(-1);
+
+    prev.addEventListener('click', function(e) {
+        plusSlides(-1);
     });
-    next.addEventListener('click', function() {
-        plusSlide(1);
+    next.addEventListener('click', function(e) {
+        plusSlides(1);
     });
-    //Реализация точек через делегирование;
-    activeDot.addEventListener('click', function(event) {
-        //Генерация номера слайда;
-        for (let counter = 0; counter < allDots.length + 1; counter++) {
-            //Делегируем
-            if (event.target.classList.contains('dot') && event.target == allDots[counter - 1]) {
-                current(counter);
+
+    dotsWrap.addEventListener('click', function(e) {
+        for (var i = 0; i < dots.length + 1; i++) {
+            if (e.target.classList.contains('dot') && e.target == dots[i - 1]) {
+                currentSlide(i);
             }
         }
     });
-    //Вызов;
-    show();
 
     //Калькулятор;
     //Переменные;
