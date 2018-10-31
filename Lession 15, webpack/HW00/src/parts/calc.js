@@ -17,8 +17,8 @@ function calc() {
             usersumm % 1 != 0 || dayssumm % 1 != 0 || usersumm <= 0 || dayssumm <= 0) {
             totalValue.innerHTML = 0;
         } else {
-            let x = total;
-            totalValue.innerHTML = x * places.options[places.selectedIndex].value;
+            let fullSumm = total;
+            totalValue.innerHTML = fullSumm * places.options[places.selectedIndex].value;
         }
     });
 
@@ -30,8 +30,8 @@ function calc() {
             usersumm % 1 != 0 || dayssumm % 1 != 0 || usersumm <= 0 || dayssumm <= 0) {
             totalValue.innerHTML = 0;
         } else {
-          let x = total;
-            totalValue.innerHTML = x * places.options[places.selectedIndex].value;
+            let fullSumm = total;
+            totalValue.innerHTML = fullSumm * places.options[places.selectedIndex].value;
         }
     });
 
@@ -42,21 +42,16 @@ function calc() {
             dayssumm % 1 != 0 || usersumm <= 0 || dayssumm <= 0) {
             totalValue.innerHTML = 0;
         } else {
-            let x = total;
-            totalValue.innerHTML = x * this.options[this.selectedIndex].value;
+            let fullSumm = total;
+            totalValue.innerHTML = fullSumm * this.options[this.selectedIndex].value;
         }
     });
 
+    input.addEventListener('input', function() {
+        input.value = input.value.replace(/[^\d]/g, '');
+        if (input.value.length > 2) input.value = input.value.slice(0, 2);
+    });
 
-    function numberblock(input) {
-        input.addEventListener('input', function() {
-            input.value = input.value.replace(/[^\d]/g, '');
-            if (input.value.length > 2) input.value = input.value.slice(0, 2);
-        });
-    }
-
-    numberblock(persons);
-    numberblock(days);
 }
 
 module.exports = calc;

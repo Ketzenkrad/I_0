@@ -40,7 +40,6 @@
                     hours.innerHTML = '00';
                     minutes.innerHTML = '00';
                     seconds.innerHTML = '00';
-                    console.log("End++");
                 }
             }
         }

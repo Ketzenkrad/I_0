@@ -40,21 +40,21 @@ function calc() {
             dayssumm % 1 != 0 || usersumm <= 0 || dayssumm <= 0) {
             totalValue.innerHTML = 0;
         } else {
-            let x = total;
-            totalValue.innerHTML = x * this.options[this.selectedIndex].value;
+            let allSum = total;
+            totalValue.innerHTML = allSum * this.options[this.selectedIndex].value;
         }
     });
 
 
-    function numberblock(input) {
-        input.addEventListener('input', function() {
-            input.value = input.value.replace(/[^\d]/g, '');
-            if (input.value.length > 2) input.value = input.value.slice(0, 2);
-        });
-    }
+    input.addEventListener('input', function() {
+        input.value = input.value.replace(/[^\d]/g, '');
+    });
 
-    numberblock(persons);
-    numberblock(days);
+    input.addEventListener('input', function() {
+        input.value = input.value.replace(/[^\d]/g, '');
+    });
+
+
 }
 
 module.exports = calc;
